@@ -18,15 +18,7 @@ public class Main extends Application {
 		try {
 			BorderPane root = new BorderPane();
 			root.setPadding(new Insets(10, 20, 10, 20));
-
-			HBox hbox = new HBox();
-			Label enter = new Label("Enter a list of the teams in this tournament (comma separated): ");
-			TextField list = new TextField("Enter a list of teams");
-			Button submitList = new Button("Submit");
-			hbox.getChildren().add(enter);
-			hbox.getChildren().add(list);
-			hbox.getChildren().add(submitList);
-			root.setTop(hbox);
+			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
 			
 			GridPane gridPane = new GridPane();
 			Label team1 = new Label("Team 01");
@@ -54,10 +46,20 @@ public class Main extends Application {
 			gridPane.add(score4, 1, 9);
 			
 			gridPane.add(new Label("TBD"), 2, 3);
+			TextField score5 = new TextField("score...");
+			score5.setDisable(true);
+			TextField score6 = new TextField("score...");
+			score6.setDisable(true);
 			gridPane.add(new Label("TBD"), 2, 8);
 			Button disabledBtn = new Button("Submit");
 			disabledBtn.setDisable(true);
 			gridPane.add(disabledBtn, 2, 5);
+			gridPane.add(score5, 3, 3);
+			gridPane.add(score6, 3, 8);
+			gridPane.add(new Label(""), 3, 5);
+
+			gridPane.add(new Label("And The Winner Is: "), 4, 5);
+
 			
 			root.setLeft(gridPane);
 
