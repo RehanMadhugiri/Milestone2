@@ -1,5 +1,8 @@
 package application;
 	
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
@@ -11,11 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) { // Needs to be changed to display who come in first, second, and third place.
 		try {
 			GridPane gridPane = new GridPane();
 			ScrollPane scroll = new ScrollPane(gridPane);
@@ -235,6 +240,21 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		File teamsFile = new File(args[0]); // Takes file from command line. *Also might need to change everything from here on down depending on how they check for file input.*
+		ArrayList<Challenger> challengers = new ArrayList<Challenger>();
+		try {
+			Scanner scnr = new Scanner(teamsFile);
+			int seed = 1;
+			while(scnr.hasNextLine()) {
+				Challenger challenger = new Challenger(seed + " " + scnr.nextLine()); // Creates new challenger with seed number next to name.
+				challengers.add(challenger);
+				seed++;
+			}
+			// STILL MIGHT NEED TO ADD MORE CODE TO MAKE BRACKET STUFF
+			scnr.close();
+		} catch(FileNotFoundException e) {
+			System.out.println("ERROR: File not found.");
+		}
 		launch(args);
 	}
 }
