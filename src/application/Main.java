@@ -19,6 +19,9 @@ import java.util.Scanner;
 
 
 public class Main extends Application {
+	
+	public static Bracket bracket;
+	
 	@Override
 	public void start(Stage primaryStage) { // Needs to be changed to display who come in first, second, and third place.
 		try {
@@ -250,8 +253,8 @@ public class Main extends Application {
 				challengers.add(challenger);
 				seed++;
 			}
-			// STILL MIGHT NEED TO ADD MORE CODE TO MAKE BRACKET STUFF
 			scnr.close();
+			bracket = new Bracket(challengers);
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
 		}
