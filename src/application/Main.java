@@ -21,6 +21,7 @@ import java.util.Scanner;
 public class Main extends Application {
 	
 	public static Bracket bracket;
+	public static ArrayList<Label> teamLabels;
 	
 	@Override
 	public void start(Stage primaryStage) { // Needs to be changed to display who come in first, second, and third place.
@@ -30,6 +31,12 @@ public class Main extends Application {
 			BorderPane root = new BorderPane(scroll);
 			root.setPadding(new Insets(10, 20, 10, 20));
 			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
+			
+			
+			
+			for(int i=0; i<teamLabels.size(); i++) {
+				gridPane.add(teamLabels.get(i), 0, arg2);
+			}
 			
 			Label team1 = new Label("Team 01");
 			Label team2 = new Label("Team 02");
@@ -243,7 +250,7 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		File teamsFile = new File(args[0]); // Takes file from command line. *Also might need to change everything from here on down depending on how they check for file input.*
+		File teamsFile = new File(args[0]);
 		ArrayList<Challenger> challengers = new ArrayList<Challenger>();
 		try {
 			Scanner scnr = new Scanner(teamsFile);
@@ -255,6 +262,10 @@ public class Main extends Application {
 			}
 			scnr.close();
 			bracket = new Bracket(challengers);
+			teamLabels = new ArrayList<Label>();
+			for(int i=0; i<challengers.size(); i++) {
+				teamLabels.add(new Label(challengers.get(i).getName()));
+			}
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
 		}
