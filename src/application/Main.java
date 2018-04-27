@@ -32,34 +32,34 @@ public class Main extends Application {
 			root.setPadding(new Insets(10, 20, 10, 20));
 			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
 			
-			
-			
+			int y_coord = 2;
 			for(int i=0; i<teamLabels.size(); i++) {
-				gridPane.add(teamLabels.get(i), 0, arg2);
+				gridPane.add(teamLabels.get(i), 0, y_coord);
+				y_coord += 5;
 			}
 			
-			Label team1 = new Label("Team 01");
-			Label team2 = new Label("Team 02");
-			Label team3 = new Label("Team 03");
-			Label team4 = new Label("Team 04");
-			Label team5 = new Label("Team 05");
-			Label team6 = new Label("Team 06"); 
-			Label team7 = new Label("Team 07");
-			Label team8 = new Label("Team 08");
-			Label team9 = new Label("Team 09");
-			Label team10 = new Label("Team 10");
-			Label team11 = new Label("Team 11");
-			Label team12 = new Label("Team 12");
-			Label team13 = new Label("Team 13");
-			Label team14 = new Label("Team 14");
-			Label team15 = new Label("Team 15");
-			Label team16 = new Label("Team 16");
+//			Label team1 = new Label("Team 01");
+//			Label team2 = new Label("Team 02");
+//			Label team3 = new Label("Team 03");
+//			Label team4 = new Label("Team 04");
+//			Label team5 = new Label("Team 05");
+//			Label team6 = new Label("Team 06"); 
+//			Label team7 = new Label("Team 07");
+//			Label team8 = new Label("Team 08");
+//			Label team9 = new Label("Team 09");
+//			Label team10 = new Label("Team 10");
+//			Label team11 = new Label("Team 11");
+//			Label team12 = new Label("Team 12");
+//			Label team13 = new Label("Team 13");
+//			Label team14 = new Label("Team 14");
+//			Label team15 = new Label("Team 15");
+//			Label team16 = new Label("Team 16");
 			Button submit1_1 = new Button("Submit"); //Numbers next to submit button variable names indicate round and the button number of the round.
 			TextField score1_1 = new TextField("score..."); //Numbers next to score variable names indicate round and the score number of the round.
 			TextField score1_2 = new TextField("score...");	
 			gridPane.add(new Label(""), 0, 0);
-			gridPane.add(team1, 0, 2);
-			gridPane.add(team16, 0, 4);
+//			gridPane.add(team1, 0, 2);
+//			gridPane.add(team16, 0, 4);
 			gridPane.add(submit1_1, 0, 3);
 			gridPane.add(score1_1, 1, 2);
 			gridPane.add(score1_2, 1, 4);
@@ -68,8 +68,8 @@ public class Main extends Application {
 			TextField score1_3 = new TextField("score...");
 			TextField score1_4 = new TextField("score...");	
 
-			gridPane.add(team2, 0, 7);
-			gridPane.add(team15, 0, 9);
+//			gridPane.add(team2, 0, 7);
+//			gridPane.add(team15, 0, 9);
 			gridPane.add(submit1_2, 0, 8);
 			gridPane.add(score1_3, 1, 7);
 			gridPane.add(score1_4, 1, 9);
@@ -79,8 +79,8 @@ public class Main extends Application {
 			TextField score1_6 = new TextField("score...");
 			
 			gridPane.add(new Label(""), 2, 10);
-			gridPane.add(team3, 0, 12);
-			gridPane.add(team14, 0, 14);
+//			gridPane.add(team3, 0, 12);
+//			gridPane.add(team14, 0, 14);
 			gridPane.add(submit1_3, 0, 13);
 			gridPane.add(score1_5, 1, 12);
 			gridPane.add(score1_6, 1, 14);
@@ -89,8 +89,8 @@ public class Main extends Application {
 			TextField score1_7 = new TextField("score...");
 			TextField score1_8 = new TextField("score...");
 			
-			gridPane.add(team4, 0, 17);
-			gridPane.add(team13, 0, 19);
+//			gridPane.add(team4, 0, 17);
+//			gridPane.add(team13, 0, 19);
 			gridPane.add(submit1_4, 0, 18);
 			gridPane.add(score1_7, 1, 17);
 			gridPane.add(score1_8, 1, 19);
@@ -100,8 +100,8 @@ public class Main extends Application {
 			TextField score1_10 = new TextField("score...");
 			
 			gridPane.add(new Label(""), 2, 20);
-			gridPane.add(team5, 0, 22);
-			gridPane.add(team12, 0, 24);
+//			gridPane.add(team5, 0, 22);
+//			gridPane.add(team12, 0, 24);
 			gridPane.add(submit1_5, 0, 23);
 			gridPane.add(score1_9, 1, 22);
 			gridPane.add(score1_10, 1, 24);
@@ -110,8 +110,8 @@ public class Main extends Application {
 			TextField score1_11 = new TextField("score...");
 			TextField score1_12 = new TextField("score...");
 			
-			gridPane.add(team6, 0, 27);
-			gridPane.add(team11, 0, 29);
+//			gridPane.add(team6, 0, 27);
+//			gridPane.add(team11, 0, 29);
 			gridPane.add(submit1_6, 0, 28);
 			gridPane.add(score1_11, 1, 27);
 			gridPane.add(score1_12, 1, 29);
@@ -121,8 +121,8 @@ public class Main extends Application {
 			TextField score1_14 = new TextField("score...");
 			
 			gridPane.add(new Label(""), 2, 30);
-			gridPane.add(team7, 0, 32);
-			gridPane.add(team10, 0, 34);
+//			gridPane.add(team7, 0, 32);
+//			gridPane.add(team10, 0, 34);
 			gridPane.add(submit1_7, 0, 33);
 			gridPane.add(score1_13, 1, 32);
 			gridPane.add(score1_14, 1, 34);
@@ -131,8 +131,8 @@ public class Main extends Application {
 			TextField score1_15 = new TextField("score...");
 			TextField score1_16 = new TextField("score...");
 			
-			gridPane.add(team8, 0, 37);
-			gridPane.add(team9, 0, 39);
+//			gridPane.add(team8, 0, 37);
+//			gridPane.add(team9, 0, 39);
 			gridPane.add(submit1_8, 0, 38);
 			gridPane.add(score1_15, 1, 37);
 			gridPane.add(score1_16, 1, 39);
