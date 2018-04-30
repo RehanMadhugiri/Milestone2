@@ -51,29 +51,43 @@ public class Main extends Application {
 			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
-						gridPane.add(teamScores.get(i).get(j), scoreXCoord, scoreYCoord);
-						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 2);
+						TextField teamScores1 = teamScores.get(i).get(j);
+						TextField teamScores2 = teamScores.get(i).get(j+1);
+						gridPane.add(teamScores1, scoreXCoord, scoreYCoord);
+						gridPane.add(teamScores2, scoreXCoord, scoreYCoord + 2);
 						scoreYCoord += 5;
 					}
 					scoreYCoord = 3;
 				} else if(i==1) {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
-						gridPane.add(teamScores.get(i).get(j), scoreXCoord, scoreYCoord);
-						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 5);
+						TextField teamScores1 = teamScores.get(i).get(j);
+						TextField teamScores2 = teamScores.get(i).get(j+1);
+						teamScores1.setDisable(true);
+						teamScores2.setDisable(true);
+						gridPane.add(teamScores1, scoreXCoord, scoreYCoord);
+						gridPane.add(teamScores2, scoreXCoord, scoreYCoord + 5);
 						scoreYCoord += 10;
 					}
 					scoreYCoord = 5;
 				} else if(i==2) {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
-						gridPane.add(teamScores.get(i).get(j), scoreXCoord, scoreYCoord);
-						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 10);
+						TextField teamScores1 = teamScores.get(i).get(j);
+						TextField teamScores2 = teamScores.get(i).get(j+1);
+						teamScores1.setDisable(true);
+						teamScores2.setDisable(true);
+						gridPane.add(teamScores1, scoreXCoord, scoreYCoord);
+						gridPane.add(teamScores2, scoreXCoord, scoreYCoord + 10);
 						scoreYCoord += 20;
 					}
 					scoreYCoord = 10;
 				} else {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
-						gridPane.add(teamScores.get(i).get(j), scoreXCoord, scoreYCoord);
-						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 20);
+						TextField teamScores1 = teamScores.get(i).get(j);
+						TextField teamScores2 = teamScores.get(i).get(j+1);
+						teamScores1.setDisable(true);
+						teamScores2.setDisable(true);
+						gridPane.add(teamScores1, scoreXCoord, scoreYCoord);
+						gridPane.add(teamScores2, scoreXCoord, scoreYCoord + 20);
 						scoreYCoord*=2;
 					}
 				}
