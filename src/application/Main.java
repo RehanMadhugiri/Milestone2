@@ -49,6 +49,46 @@ public class Main extends Application {
 				teamYCoord += 5;
 			}
 			
+			int submitYCoord;
+			int submitXCoord;
+			
+			for(int i = 0; i < numRounds; i++){
+				submitXCoord = i;
+				if(i == 0){
+					submitYCoord = 3;
+					for(int j = 0; j < submitButtons.get(i).size(); j++){
+						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+						submitYCoord += 5;
+					}
+				}
+				
+				submitXCoord = 2 * i;
+				if(i == 1){
+					submitYCoord = 5;
+					for(int j = 0; j < submitButtons.get(i).size(); j++){
+						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+						submitButtons.get(i).get(j).setDisable(true);
+						submitYCoord += 10;
+					}
+				}
+				if(i == 2){
+					submitYCoord = 10;
+					for(int j = 0; j < submitButtons.get(i).size(); j++){
+						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+						submitButtons.get(i).get(j).setDisable(true);
+						submitYCoord += 20;
+					}
+				}
+				if( i == 3){
+					submitYCoord = 20;
+					for(int j = 0; j < submitButtons.get(i).size(); j++){
+						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+						submitButtons.get(i).get(j).setDisable(true);
+						submitYCoord += 20;
+					}
+				}
+			}
+			
 			int scoreXCoord = 1;
 			int scoreYCoord = 2;
 			for(int i=0; i<numRounds; i++) {
