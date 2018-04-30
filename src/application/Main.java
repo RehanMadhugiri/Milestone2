@@ -48,9 +48,6 @@ public class Main extends Application {
 			
 			int scoreXCoord = 1;
 			int scoreYCoord = 2;
-			int specialYCoord = 10;
-			int spaceBetweenChallengers = 20;
-			int spaceBetweenSubBrackets = 40;
 			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
@@ -72,12 +69,12 @@ public class Main extends Application {
 						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 10);
 						scoreYCoord += 20;
 					}
-					scoreYCoord *= 2;
+					scoreYCoord = 10;
 				} else {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
-						gridPane.add(teamScores.get(i).get(j), scoreXCoord, specialYCoord);
-						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, specialYCoord + 10);
-						scoreYCoord += 20;
+						gridPane.add(teamScores.get(i).get(j), scoreXCoord, scoreYCoord);
+						gridPane.add(teamScores.get(i).get(j+1), scoreXCoord, scoreYCoord + 20);
+						scoreYCoord*=2;
 					}
 				}
 				scoreXCoord+=2;
