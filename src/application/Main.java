@@ -7,7 +7,10 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -382,7 +385,8 @@ public class Main extends Application {
 				}
 			}
 		} catch(FileNotFoundException e) {
-			System.out.println("ERROR: File not found.");
+			Alert alert = new Alert(Alert.AlertType.ERROR, "ERROR: File not found.");
+			alert.showAndWait().filter(response -> response == ButtonType.OK);
 		}
 		launch(args);
 	}
