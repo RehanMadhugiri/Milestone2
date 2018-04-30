@@ -80,6 +80,31 @@ public class Main extends Application {
 				scoreXCoord+=2;
 			}
 			
+			int TBDLabelXCoord = 2;
+			int TBDLabelYCoord = 3;
+			for(int i=0; i<TBDLabels.size(); i++) {
+				if(i==0) {
+					for(int j=0; j<TBDLabels.get(i).size(); j++) {
+						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						TBDLabelYCoord +=5;
+					}
+					TBDLabelYCoord = 5;
+				} else if(i==1) {
+					for(int j=0; j<TBDLabels.get(i).size(); j++) {
+						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						TBDLabelYCoord+=10;
+					}
+					TBDLabelYCoord = 10;
+				} else if(i==2) {
+					for(int j=0; j<TBDLabels.get(i).size(); j++) {
+						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						TBDLabelYCoord+=20;
+					}
+				}
+				TBDLabelXCoord += 2;
+			}
+			
+			
 //			Label team1 = new Label("Team 01");
 //			Label team2 = new Label("Team 02");
 //			Label team3 = new Label("Team 03");
@@ -181,14 +206,14 @@ public class Main extends Application {
 	
 			////////////////////////////////////// END OF CODE FOR FIRST ROUND SETUP //////////////////////////////////
 			
-			gridPane.add(new Label("TBD"), 2, 3); // TEAMS TBD. MIGHT NEED TO MAKE INTO SPECIFIC OBJECTS WITH VARIABLES SO THEY CAN BE CHANGED WHEN TEAMS MOVE ON
-			gridPane.add(new Label("TBD"), 2, 8);
-			gridPane.add(new Label("TBD"), 2, 13);
-			gridPane.add(new Label("TBD"), 2, 18);
-			gridPane.add(new Label("TBD"), 2, 23);
-			gridPane.add(new Label("TBD"), 2, 28);
-			gridPane.add(new Label("TBD"), 2, 33);
-			gridPane.add(new Label("TBD"), 2, 38);
+//			gridPane.add(new Label("TBD"), 2, 3); // TEAMS TBD. MIGHT NEED TO MAKE INTO SPECIFIC OBJECTS WITH VARIABLES SO THEY CAN BE CHANGED WHEN TEAMS MOVE ON
+//			gridPane.add(new Label("TBD"), 2, 8);
+//			gridPane.add(new Label("TBD"), 2, 13);
+//			gridPane.add(new Label("TBD"), 2, 18);
+//			gridPane.add(new Label("TBD"), 2, 23);
+//			gridPane.add(new Label("TBD"), 2, 28);
+//			gridPane.add(new Label("TBD"), 2, 33);
+//			gridPane.add(new Label("TBD"), 2, 38);
 			
 			TextField score2_1 = new TextField("score...");
 			score2_1.setDisable(true);
@@ -232,10 +257,10 @@ public class Main extends Application {
 			
             //////////////////////////////////////END OF CODE FOR SECOND ROUND SETUP //////////////////////////////////
 			
-			gridPane.add(new Label("TBD"), 4, 5); //SAME POSSIBLE ISSUE AS ROUND 1
-			gridPane.add(new Label("TBD"), 4, 15);
-			gridPane.add(new Label("TBD"), 4, 25);
-			gridPane.add(new Label("TBD"), 4, 35);
+//			gridPane.add(new Label("TBD"), 4, 5); //SAME POSSIBLE ISSUE AS ROUND 1
+//			gridPane.add(new Label("TBD"), 4, 15);
+//			gridPane.add(new Label("TBD"), 4, 25);
+//			gridPane.add(new Label("TBD"), 4, 35);
 			
 			TextField score3_1 = new TextField("score...");
 			score3_1.setDisable(true);
@@ -260,8 +285,8 @@ public class Main extends Application {
 			
             //////////////////////////////////////END OF CODE FOR THIRD ROUND SETUP //////////////////////////////////
 			
-			gridPane.add(new Label("TBD"), 6, 10); //SAME POSSIBLE ISSUE AS OTHER ROUNDS
-			gridPane.add(new Label("TBD"), 6, 30);
+//			gridPane.add(new Label("TBD"), 6, 10); //SAME POSSIBLE ISSUE AS OTHER ROUNDS
+//			gridPane.add(new Label("TBD"), 6, 30);
 			
 			TextField score4_1 = new TextField("score...");
 			score4_1.setDisable(true);
@@ -338,7 +363,7 @@ public class Main extends Application {
 			TBDLabels = new ArrayList<ArrayList<Label>>();
 			for(int i=numRounds-1; i>0; i--) {
 				TBDLabels.add(new ArrayList<Label>((int) (Math.pow(2, i))/2));
-				for(int j=0; j<(Math.pow(2, i)/2); j++) {
+				for(int j=0; j<(Math.pow(2, i)); j++) {
 					TBDLabels.get(TBDLabels.size()-1).add(new Label("TBD"));
 				}
 			}
