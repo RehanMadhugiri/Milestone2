@@ -284,7 +284,6 @@ public class Main extends Application {
 			for(int i = 0; i < teamLabels.size(); i++) { // number of rounds
 				bracket.getMatchups().add(new ArrayList<Matchup>());
 				if(i == 0){
-					System.out.println(teamLabels.get(i).size());
 					for(int j = 0; j < teamLabels.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1]));
 					}
