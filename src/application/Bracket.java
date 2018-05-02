@@ -18,7 +18,7 @@ public class Bracket {
 	private Challenger[] challengersAtStart;
 	private ArrayList<Challenger> activeChallengers;
 	private int numChallengers;
-	private ArrayList<Matchup> matchups = new ArrayList<Matchup>();
+	private ArrayList<ArrayList<Matchup>> matchups = new ArrayList<ArrayList<Matchup>>();
 	
 	public Bracket(ArrayList<Challenger> challengers) {
 		activeChallengers = challengerSorter(challengers);
@@ -53,7 +53,7 @@ public class Bracket {
 		activeChallengers.remove(c);
 	}
 	
-	public ArrayList<Matchup> getMatchups() {
+	public ArrayList<ArrayList<Matchup>> getMatchups() {
 		return matchups;
 	}
 	
