@@ -21,6 +21,10 @@ public class Challenger {
 		return name;
 	}
 	
+	public void setName(String newName) {
+		name = newName;
+	}
+	
 	public String toString() {
 		return name;
 	}
