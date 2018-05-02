@@ -15,14 +15,9 @@ import javafx.scene.control.Label;
 
 public class Challenger {
 	
-<<<<<<< HEAD
 	private String name; // Name of challenger.
 	private int score; // Score of challenger at a certain time.
-=======
-	private String name;
-	private int score;
 	private Label label;
->>>>>>> 16dc76319a825b21f6788021c9106d091c224f86
 	
 	/**
 	 * Challenger constructor which sets the challenger's name to whatever is passed in the
