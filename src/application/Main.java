@@ -64,7 +64,7 @@ public class Main extends Application {
 			
 			for(int i = 0; i < numRounds; i++){
 				submitXCoord = i;
-				if(i == 0){
+				if(i == 0) {
 					submitYCoord = 3;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -73,7 +73,7 @@ public class Main extends Application {
 				}
 				
 				submitXCoord = 2 * i;
-				if(i == 1){
+				if(i == 1) {
 					submitYCoord = 5;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -81,7 +81,8 @@ public class Main extends Application {
 						submitYCoord += 10;
 					}
 				}
-				if(i == 2){
+				
+				if(i == 2) {
 					submitYCoord = 10;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -89,7 +90,8 @@ public class Main extends Application {
 						submitYCoord += 20;
 					}
 				}
-				if( i == 3){
+				
+				if( i == 3) {
 					submitYCoord = 20;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
