@@ -1,13 +1,3 @@
-/**
- * Project: Tournament Bracket Project
- * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
- * E-mail: awaldron2@wisc.edu
- * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
- * Other Sources Used: None.
- * Known Bugs:
- */
 package application;
 	
 import java.io.File;
@@ -36,7 +26,7 @@ public class Main extends Application {
 	//public static ArrayList<Label> teamLabels;
 	private static ArrayList<ArrayList<TextField>> teamScores;
 	private static ArrayList<ArrayList<Button>> submitButtons;
-	private static ArrayList<ArrayList<Challenger>> teams;
+	private static ArrayList<ArrayList<Label>> teamLabels;
 	private static int numSubmit;
 	private static int numTextFields;
 	private static int numTBDLabels;
@@ -64,7 +54,7 @@ public class Main extends Application {
 			
 			for(int i = 0; i < numRounds; i++){
 				submitXCoord = i;
-				if(i == 0) {
+				if(i == 0){
 					submitYCoord = 3;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -73,7 +63,7 @@ public class Main extends Application {
 				}
 				
 				submitXCoord = 2 * i;
-				if(i == 1) {
+				if(i == 1){
 					submitYCoord = 5;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -81,8 +71,7 @@ public class Main extends Application {
 						submitYCoord += 10;
 					}
 				}
-				
-				if(i == 2) {
+				if(i == 2){
 					submitYCoord = 10;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -90,8 +79,7 @@ public class Main extends Application {
 						submitYCoord += 20;
 					}
 				}
-				
-				if( i == 3) {
+				if( i == 3){
 					submitYCoord = 20;
 					for(int j = 0; j < submitButtons.get(i).size(); j++){
 						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
@@ -153,30 +141,30 @@ public class Main extends Application {
 			int TBDLabelYCoord = 2;
 			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
-					for(int j=0; j<teams.get(i).size(); j+=2) {
-						gridPane.add(teams.get(i).get(j).getLabel(), TBDLabelXCoord, TBDLabelYCoord);
-						gridPane.add(teams.get(i).get(j + 1).getLabel(), TBDLabelXCoord, TBDLabelYCoord + 2);
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 2);
 						TBDLabelYCoord +=5;
 					}
 					TBDLabelYCoord = 3;
 				} else if(i==1) {
-					for(int j=0; j<teams.get(i).size(); j+=2) {
-						gridPane.add(teams.get(i).get(j).getLabel(), TBDLabelXCoord, TBDLabelYCoord);
-						gridPane.add(teams.get(i).get(j + 1).getLabel(), TBDLabelXCoord, TBDLabelYCoord + 5);
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 5);
 						TBDLabelYCoord+=10;
 					}
 					TBDLabelYCoord = 5;
 				} else if(i==2) {
-					for(int j=0; j<teams.get(i).size(); j+=2) {
-						gridPane.add(teams.get(i).get(j).getLabel(), TBDLabelXCoord, TBDLabelYCoord);
-						gridPane.add(teams.get(i).get(j + 1).getLabel(), TBDLabelXCoord, TBDLabelYCoord + 10);
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 10);
 						TBDLabelYCoord+=20;
 					}
 					TBDLabelYCoord = 10;
 				} else {
-					for(int j=0; j<teams.get(i).size(); j+=2) {
-						gridPane.add(teams.get(i).get(j).getLabel(), TBDLabelXCoord, TBDLabelYCoord);
-						gridPane.add(teams.get(i).get(j + 1).getLabel(), TBDLabelXCoord, TBDLabelYCoord + 20);
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 20);
 
 						TBDLabelYCoord+=40;
 					}
@@ -188,12 +176,11 @@ public class Main extends Application {
 			for(int i = 0; i < submitButtons.size(); i++) {
 				for(int j = 0; j < submitButtons.get(i).size(); j++) {
 					Button button = submitButtons.get(i).get(j);
-					Label label = teams.get(i).get(j).getLabel();
+					Label label = teamLabels.get(i).get(j);
 					ArrayList<TextField> roundScores = teamScores.get(i);
 					TextField score1 = roundScores.get(j*2);
 					TextField score2 = roundScores.get(j*2 + 1);
-					
-					
+					int numScoreFields = teamLabels.size()-1;
 					//Label team1 = teamLabels.get();
 					button.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -240,6 +227,11 @@ public class Main extends Application {
 			numTextFields = (challengers.size() * 2) - 2;
 			numTBDLabels = (challengers.size()) - 2;
 			numRounds = (int) (Math.log(challengers.size()) / Math.log(2));
+			
+//			teamLabels = new ArrayList<Label>();
+//			for(int i=0; i<challengers.size(); i++) {
+//				teamLabels.add(new Label(bracket.getActiveChallengers().get(i).getName()));
+//			}
 		
 			
 			teamScores = new ArrayList<ArrayList<TextField>>();
@@ -259,9 +251,9 @@ public class Main extends Application {
 			}
 			
 			// Adding initial team names to teamLabels
-			teams = new ArrayList<ArrayList<Challenger>>();
+			teamLabels = new ArrayList<ArrayList<Label>>();
 			for(int i = numRounds; i > 0; i--) {
-				teams.add(new ArrayList<Challenger>());
+				teamLabels.add(new ArrayList<Label>());
 				//System.out.println(teamLabels.size());
 			}
 			
@@ -276,34 +268,46 @@ public class Main extends Application {
 //						teamLabels.get(4 - i).add(new Label("TBD"));
 //					}
 //				}
-				for(int j = 0; j < Math.pow(2, i); j ++) {
-					if( i == numRounds) {
-						teams.get(0).add(new Challenger(bracket.getActiveChallengers().get(j).getName()));
+				for(int j = 0; j < Math.pow(2, i); j ++){
+					if( i == 4){
+						teamLabels.get(0).add(new Label(bracket.getActiveChallengers().get(j).getName()));
 					}
-					else {
-						teams.get(numRounds - i).add(new Challenger("TBD"));	
+					else{
+						teamLabels.get(numRounds - i).add(new Label("TBD"));	
 					}
 				}
 				//System.out.println(i-1 +" " + teamLabels.get(i - 1).size());
 
 			}
 			
+//			for(int i = 0; i < teamLabels.size(); i ++){
+//				for(int j = 0; j < teamLabels.get(i).size(); j++){
+//					System.out.print(teamLabels.get(i).get(j) + ", ");
+//				}
+//				System.out.println();
+//			}
+			
 			// adding matchups to matchup 
-			for(int i = 0; i < teams.size(); i++) { // number of rounds
+			for(int i = 0; i < teamLabels.size(); i++) { // number of rounds
 				bracket.getMatchups().add(new ArrayList<Matchup>());
-				if(i == 0) {
-					for(int j = 0; j < teams.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
-						bracket.getMatchups().get(i).add(new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1]));
+				if(i == 0){
+//					System.out.println(teamLabels.get(i).size());
+					for(int j = 0; j < teamLabels.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
+						bracket.getMatchups().get(i).add(
+								new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1], submitButtons.get(0).get(j)));
 					}
 				}
-				else {
-					for(int j = 0; j < teams.get(i).size(); j += 2){ // number of matchups in each round
-						bracket.getMatchups().get(i).add(new Matchup(new Challenger("TBD"), new Challenger("TBD")));
+				
+				else{
+					for(int j = 0; j < teamLabels.get(i).size() / 2; j ++){ // number of matchups in each round
+						bracket.getMatchups().get(i).add(
+								new Matchup(new Challenger("TBD"), new Challenger("TBD"), submitButtons.get(i).get(j)));
 					}
 				}
 				
 		}
-		
+			
+//			System.out.println(teamLabels.get(numRounds-1).size());
 			
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
