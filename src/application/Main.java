@@ -175,6 +175,7 @@ public class Main extends Application {
 				        @Override
 				        public void handle(ActionEvent event) {
 				            System.out.println("Hello World!");
+				            button.setDisable(true);
 				        }
 				    });
 				}
@@ -245,6 +246,7 @@ public class Main extends Application {
 					TBDLabels.get(TBDLabels.size()-1).add(new Label("TBD"));
 				}
 			}
+			
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
 		}
