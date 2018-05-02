@@ -280,13 +280,6 @@ public class Main extends Application {
 
 			}
 			
-			for(int i = 0; i < teamLabels.size(); i ++){
-				for(int j = 0; j < teamLabels.get(i).size(); j++){
-					System.out.print(teamLabels.get(i).get(j) + ", ");
-				}
-				System.out.println();
-			}
-			
 			// adding matchups to matchup 
 			for(int i = 0; i < teamLabels.size(); i++) { // number of rounds
 				bracket.getMatchups().add(new ArrayList<Matchup>());
@@ -304,8 +297,7 @@ public class Main extends Application {
 				}
 				
 		}
-			
-			System.out.println(teamLabels.get(numRounds-1).size());
+		
 			
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
