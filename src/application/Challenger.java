@@ -11,17 +11,25 @@
 
 package application;
 
+import javafx.scene.control.Label;
+
 public class Challenger {
 	
 	private String name;
 	private int score;
+	private Label label;
 	
 	public Challenger(String name) {
 		this.name = name;
+		label = new Label(name);
 	}
 	
 	public int getScore() {
 		return score;
+	}
+	
+	public Label getLabel() {
+		return label;
 	}
 	
 	public void setScore(int newScore) {
