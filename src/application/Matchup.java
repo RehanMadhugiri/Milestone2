@@ -19,11 +19,11 @@ public class Matchup {
 	
 	Challenger c1; // First challenger.
 	Challenger c2; // Second challenger.
-	Button button;
+	Button button; // Submit button.
 	
 	/**
 	 * The constructor method sets the c1 field to the first challenger and the c2 field to the
-	 * second challenger.
+	 * second challenger. It also sets a button to the button field for the matchup.
 	 * 
 	 * @param c1 First challenger.
 	 * @param c2 Second challenger.
@@ -61,6 +61,12 @@ public class Matchup {
 		return c2;
 	}
 	
+	/**
+	 * This method returns the submit button of this particular matchup object.
+	 * 
+	 * @param No parameters.
+	 * @return Nothing returned.
+	 */
 	public Button getButton(){
 		return button;
 	}
