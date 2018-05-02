@@ -276,11 +276,11 @@ public class Main extends Application {
 //						teamLabels.get(4 - i).add(new Label("TBD"));
 //					}
 //				}
-				for(int j = 0; j < Math.pow(2, i); j ++){
-					if( i == numRounds){
+				for(int j = 0; j < Math.pow(2, i); j ++) {
+					if( i == numRounds) {
 						teams.get(0).add(new Challenger(bracket.getActiveChallengers().get(j).getName()));
 					}
-					else{
+					else {
 						teams.get(numRounds - i).add(new Challenger("TBD"));	
 					}
 				}
@@ -291,13 +291,12 @@ public class Main extends Application {
 			// adding matchups to matchup 
 			for(int i = 0; i < teams.size(); i++) { // number of rounds
 				bracket.getMatchups().add(new ArrayList<Matchup>());
-				if(i == 0){
+				if(i == 0) {
 					for(int j = 0; j < teams.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1]));
 					}
 				}
-				
-				else{
+				else {
 					for(int j = 0; j < teams.get(i).size(); j += 2){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(new Matchup(new Challenger("TBD"), new Challenger("TBD")));
 					}
