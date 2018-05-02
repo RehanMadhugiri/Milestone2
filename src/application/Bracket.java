@@ -84,8 +84,8 @@ public class Bracket {
 			ArrayList<Challenger> half2 = new ArrayList<Challenger>();
 			int incrementCount1 = 0;
 			int incrementCount2 = 1;
-			for(int i=0; i<challengerList.size(); i+=3) {
-				half1.add(challengerList.get(i));
+			for(int i=0; i<challengerList.size(); i+=3) { // First half: If number of teams = 16, half1
+				half1.add(challengerList.get(i));         // would contain 1,4,5,8,9,12,13,16.
 				if(incrementCount1 == 1) {
 					if(i != challengerList.size() - 1) {
 						half1.add(challengerList.get(i+1));
@@ -95,8 +95,8 @@ public class Bracket {
 					incrementCount1++;
 				}
 			}
-			for(int i=1; i<challengerList.size(); i+=3) {
-				half2.add(challengerList.get(i));
+			for(int i=1; i<challengerList.size(); i+=3) { // Second half: If number of teams = 16, half2
+				half2.add(challengerList.get(i));         // would contain 2,3,6,7,10,11,14,15.
 				if(incrementCount2 == 1) {
 					if(i != challengerList.size() - 1) {
 						half2.add(challengerList.get(i+1));
@@ -106,12 +106,12 @@ public class Bracket {
 					incrementCount2++;
 				}
 			}
-			ArrayList<Challenger> subArray1 = challengerSorter(half1);
-			for(int i=0; i<subArray1.size(); i++) {
+			ArrayList<Challenger> subArray1 = challengerSorter(half1); // Recurse through until base case.
+			for(int i=0; i<subArray1.size(); i++) { // Add elements from subArray to current mergingArray.
 				mergingArray.add(subArray1.get(i));
 			}
-			ArrayList<Challenger> subArray2 = challengerSorter(half2);
-			for(int i=0; i<subArray2.size(); i++) {
+			ArrayList<Challenger> subArray2 = challengerSorter(half2); // Recurse through until base case.
+			for(int i=0; i<subArray2.size(); i++) { // Add elements from subArray to current mergingArray.
 				mergingArray.add(subArray2.get(i));
 			}
 			return mergingArray;
