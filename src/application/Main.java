@@ -1,14 +1,3 @@
-/**
- * Project: Tournament Bracket Project
- * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
- * E-mail: awaldron2@wisc.edu
- * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
- * Other Sources Used: None.
- * Known Bugs:
- */
-
 package application;
 	
 import java.io.File;
@@ -34,10 +23,10 @@ import java.util.Scanner;
 public class Main extends Application {
 	
 	public static Bracket bracket;
-	public static ArrayList<Label> teamLabels;
+	//public static ArrayList<Label> teamLabels;
 	private static ArrayList<ArrayList<TextField>> teamScores;
 	private static ArrayList<ArrayList<Button>> submitButtons;
-	private static ArrayList<ArrayList<Label>> TBDLabels;
+	private static ArrayList<ArrayList<Label>> teamLabels;
 	private static int numSubmit;
 	private static int numTextFields;
 	private static int numTBDLabels;
@@ -52,12 +41,12 @@ public class Main extends Application {
 			root.setPadding(new Insets(10, 20, 10, 20));
 			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
 			
-			int teamYCoord = 2;
-			for(int i=0; i<teamLabels.size(); i+=2) {
-				gridPane.add(teamLabels.get(i), 0, teamYCoord);
-				gridPane.add(teamLabels.get(i+1), 0, teamYCoord + 2);
-				teamYCoord += 5;
-			}
+//			int teamYCoord = 2;
+//			for(int i=0; i<teamLabels.size(); i+=2) {
+//				gridPane.add(teamLabels.get(i), 0, teamYCoord);
+//				gridPane.add(teamLabels.get(i+1), 0, teamYCoord + 2);
+//				teamYCoord += 5;
+//			}
 			
 			
 			int submitYCoord;
@@ -152,26 +141,26 @@ public class Main extends Application {
 			int TBDLabelYCoord = 3;
 			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
-					for(int j=0; j<TBDLabels.get(i).size(); j++) {
-						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+					for(int j=0; j<teamLabels.get(i).size(); j++) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
 						TBDLabelYCoord +=5;
 					}
 					TBDLabelYCoord = 5;
 				} else if(i==1) {
-					for(int j=0; j<TBDLabels.get(i).size(); j++) {
-						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+					for(int j=0; j<teamLabels.get(i).size(); j++) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
 						TBDLabelYCoord+=10;
 					}
 					TBDLabelYCoord = 10;
 				} else if(i==2) {
-					for(int j=0; j<TBDLabels.get(i).size(); j++) {
-						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+					for(int j=0; j<teamLabels.get(i).size(); j++) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
 						TBDLabelYCoord+=20;
 					}
 					TBDLabelYCoord = 20;
 				} else {
-					for(int j=0; j<TBDLabels.get(i).size(); j++) {
-						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+					for(int j=0; j<teamLabels.get(i).size(); j++) {
+						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
 						TBDLabelYCoord+=40;
 					}
 				}
@@ -182,7 +171,7 @@ public class Main extends Application {
 			for(int i = 0; i < submitButtons.size(); i++) {
 				for(int j = 0; j < submitButtons.get(i).size(); j++) {
 					Button button = submitButtons.get(i).get(j);
-					Label label = TBDLabels.get(i).get(j);
+					Label label = teamLabels.get(i).get(j);
 					ArrayList<TextField> roundScores = teamScores.get(i);
 					TextField score1 = roundScores.get(j*2);
 					TextField score2 = roundScores.get(j*2 + 1);
@@ -192,6 +181,7 @@ public class Main extends Application {
 
 				        @Override
 				        public void handle(ActionEvent event) {
+				            System.out.println("Hello World!");
 				            button.setDisable(true);
 				            label.setText("TEST");
 				        }
@@ -233,17 +223,15 @@ public class Main extends Application {
 			numTBDLabels = (challengers.size()) - 2;
 			numRounds = (int) (Math.log(challengers.size()) / Math.log(2));
 			
-			teamLabels = new ArrayList<Label>();
-			for(int i=0; i<challengers.size(); i++) {
-				teamLabels.add(new Label(bracket.getActiveChallengers().get(i).getName()));
-			}
-			for(int i=0; i<teamLabels.size()/2 - 1; i+=2) {
-				bracket.getMatchups().add(new Matchup(bracket.getAllChallengers()[i], bracket.getAllChallengers()[i+1]));
-			}
+//			teamLabels = new ArrayList<Label>();
+//			for(int i=0; i<challengers.size(); i++) {
+//				teamLabels.add(new Label(bracket.getActiveChallengers().get(i).getName()));
+//			}
+		
 			
 			teamScores = new ArrayList<ArrayList<TextField>>();
 			for(int i=numRounds; i>0; i--) {
-				teamScores.add(new ArrayList<TextField>((int) Math.pow(2, i)));
+				teamScores.add(new ArrayList<TextField>());
 				for(int j=0; j<Math.pow(2, i); j++) {
 					teamScores.get(teamScores.size()-1).add(new TextField("scores..."));
 				}
@@ -251,21 +239,45 @@ public class Main extends Application {
 			
 			submitButtons = new ArrayList<ArrayList<Button>>();
 			for(int i=numRounds; i>0; i--) {
-				submitButtons.add(new ArrayList<Button>((int) ((Math.pow(2, i))/2)));
+				submitButtons.add(new ArrayList<Button>());
 				for(int j=0; j<(Math.pow(2, i)/2); j++) {
 					submitButtons.get(submitButtons.size()-1).add(new Button("Submit"));
 				}
 			}
 			
-			TBDLabels = new ArrayList<ArrayList<Label>>();
-			for(int i=numRounds; i>0; i--) {
-				TBDLabels.add(new ArrayList<Label>((int) (Math.pow(2, i))/2));
-				for(int j=0; j<(Math.pow(2, i)/2); j++) {
-					TBDLabels.get(TBDLabels.size()-1).add(new Label("TBD"));
+			// Adding initial team names to teamLabels
+			teamLabels = new ArrayList<ArrayList<Label>>();
+			for(int i = numRounds; i >= 0; i--) {
+				teamLabels.add(new ArrayList<Label>());
+				if(i == 0){
+					for(int j = 0; j < challengers.size(); j++) {
+						teamLabels.get(0).add(new Label(bracket.getActiveChallengers().get(j).getName()));
+					}
+				}
+				else{
+					for(int j = 0; j<(Math.pow(2, i)/2); j++) {
+						teamLabels.get(teamLabels.size()-1).add(new Label("TBD"));
+					}
 				}
 			}
 			
-			System.out.println(TBDLabels.get(numRounds-1).size());
+			// adding matchups to matchup 
+			for(int i = 0; i < teamLabels.size(); i++) { // number of rounds
+				if(i == 0){
+					for(int j = 0; j < teamLabels.get(i).size(); j += 2){ // number of matchups in each round
+						bracket.getMatchups().get(i).add(new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1]));
+					}
+				}
+				
+				else{
+					for(int j = 0; j < teamLabels.get(i).size(); j += 2){ // number of matchups in each round
+						bracket.getMatchups().get(i).add(new Matchup(new Challenger("TBD"), new Challenger("TBD")));
+					}
+				}
+				
+		}
+			
+			System.out.println(teamLabels.get(numRounds-1).size());
 			
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
