@@ -139,7 +139,7 @@ public class Main extends Application {
 			
 			int TBDLabelXCoord = 2;
 			int TBDLabelYCoord = 3;
-			for(int i=0; i<TBDLabels.size(); i++) {
+			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
 					for(int j=0; j<TBDLabels.get(i).size(); j++) {
 						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
@@ -157,6 +157,12 @@ public class Main extends Application {
 						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
 						TBDLabelYCoord+=20;
 					}
+					TBDLabelYCoord = 20;
+				} else {
+					for(int j=0; j<TBDLabels.get(i).size(); j++) {
+						gridPane.add(TBDLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						TBDLabelYCoord+=40;
+					}
 				}
 				TBDLabelXCoord += 2;
 			}
@@ -165,6 +171,7 @@ public class Main extends Application {
 			for(int i = 0; i < submitButtons.size(); i++) {
 				for(int j = 0; j < submitButtons.get(i).size(); j++) {
 					Button button = submitButtons.get(i).get(j);
+					Label label = TBDLabels.get(i).get(j);
 					ArrayList<TextField> roundScores = teamScores.get(i);
 					TextField score1 = roundScores.get(j*2);
 					TextField score2 = roundScores.get(j*2 + 1);
@@ -176,13 +183,14 @@ public class Main extends Application {
 				        public void handle(ActionEvent event) {
 				            System.out.println("Hello World!");
 				            button.setDisable(true);
+				            label.setText("TEST");
 				        }
 				    });
 				}
 			}
-						
-			gridPane.add(new Label("WINNER: TEAM X"), 8, 20); //CHANGE THIS FOR LATER SO IT'S NOT LITERALLY TEAM X
 			
+//			Label winner = new Label("Champion");
+//			gridPane.add(winner, 8, 20);
 			
 			root.setLeft(gridPane);
 
@@ -240,12 +248,14 @@ public class Main extends Application {
 			}
 			
 			TBDLabels = new ArrayList<ArrayList<Label>>();
-			for(int i=numRounds-1; i>0; i--) {
+			for(int i=numRounds; i>0; i--) {
 				TBDLabels.add(new ArrayList<Label>((int) (Math.pow(2, i))/2));
-				for(int j=0; j<(Math.pow(2, i)); j++) {
+				for(int j=0; j<(Math.pow(2, i)/2); j++) {
 					TBDLabels.get(TBDLabels.size()-1).add(new Label("TBD"));
 				}
 			}
+			
+			System.out.println(TBDLabels.get(numRounds-1).size());
 			
 		} catch(FileNotFoundException e) {
 			System.out.println("ERROR: File not found.");
