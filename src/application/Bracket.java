@@ -49,9 +49,9 @@ public class Bracket {
 		return activeChallengers;
 	}
 	
-	public void eliminateChallenger(Challenger c) {
-		activeChallengers.remove(c);
-	}
+//	public void eliminateChallenger(Challenger c) {
+//		activeChallengers.remove(c);
+//	}
 	
 	public ArrayList<ArrayList<Matchup>> getMatchups() {
 		return matchups;
