@@ -29,10 +29,22 @@ public class Bracket {
 		numChallengers = challengers.size();
 	}
 	
+	/**
+	 * This method returns all challengers present at the beginning of the tournament.
+	 * 
+	 * @param No parameters.
+	 * @return An array of challengers at the beginning of the tournament.
+	 */
 	public Challenger[] getAllChallengers() {
 		return challengersAtStart;
 	}
 	
+	/**
+	 * This method returns the active challengers still alive in the tournament.
+	 * 
+	 * @param No parameters.
+	 * @return The ArrayList of challengers still in the tournament.
+	 */
 	public ArrayList<Challenger> getActiveChallengers() {
 		return activeChallengers;
 	}
@@ -48,10 +60,20 @@ public class Bracket {
 	/**
 	 * This method takes the ArrayList of challengers and sorts them in the order of where they
 	 * would appear on the bracket. For example, in a sixteen team bracket the order would be 1,
-	 * 16, 8, 9, 4, 13, and so on down the bracket.
+	 * 16, 8, 9, 4, 13, and so on down the bracket. The method takes the ArrayList which is already
+	 * in numerical order and breaks the ArrayList in half. The first half starts at the first
+	 * element, skips over two elements to the fourth element, goes to the fifth element, skips
+	 * over two elements to the eighth element, goes to the ninth element and so on. The same thing
+	 * is done for the second half except it starts at the second element, goes to the third
+	 * element, and then skips two elements to get to the sixth element. This process is done
+	 * recursively on smaller and smaller halves until the ArrayLists are of size two, in which the
+	 * two elements are the correct opponents of each other. While going back up the recursion,
+	 * the ArrayLists are added together to make a single complete ArrayList with the teams in
+	 * "bracket" order.
 	 * 
-	 * @param challengerList
-	 * @return
+	 * @param challengerList ArrayList of challengers to be sorted. Challenger list must be in
+	 * numerical order.
+	 * @return An ArrayList with the challengers sorted in "bracket" order.
 	 */
 	public ArrayList<Challenger> challengerSorter(ArrayList<Challenger> challengerList) {
 		ArrayList<Challenger> mergingArray = new ArrayList<Challenger>();
