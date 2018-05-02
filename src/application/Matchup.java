@@ -15,16 +15,30 @@ import java.util.Random;
 
 public class Matchup {
 	
-	Challenger c1;
-	Challenger c2;
+	Challenger c1; // First challenger.
+	Challenger c2; // Second challenger.
 	
+	/**
+	 * The constructor method sets the c1 field to the first challenger and the c2 field to the
+	 * second challenger.
+	 * 
+	 * @param c1 First challenger.
+	 * @param c2 Second challenger.
+	 * @return Nothing returned.
+	 */
 	public Matchup(Challenger c1, Challenger c2){
 		this.c1 = c1;
 		this.c2 = c2;
 	}
 	
-	// returns the winner of the game (challenger with greater score)
-	// if there is a tie, a winner will be picked randomly
+	/**
+	 * This method returns the challenger with the greater score. If the scores are equal, the
+	 * winner is chosen randomly.
+	 * 
+	 * @param c1 First challenger.
+	 * @param c2 Second challenger.
+	 * @return The challenger with the greater score.
+	 */
 	public Challenger getWinner(Challenger c1, Challenger c2) {
 		// Tie 
 		if(c1.getScore() == c2.getScore()){
