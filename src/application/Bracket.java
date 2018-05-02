@@ -1,3 +1,14 @@
+/**
+ * Project: Tournament Bracket Project
+ * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ * E-mail: awaldron2@wisc.edu
+ * Due: 5/3/2018
+ * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
+ *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Other Sources Used: None.
+ * Known Bugs:
+ */
+
 package application;
 
 import java.util.ArrayList;
@@ -34,6 +45,14 @@ public class Bracket {
 		return matchups;
 	}
 	
+	/**
+	 * This method takes the ArrayList of challengers and sorts them in the order of where they
+	 * would appear on the bracket. For example, in a sixteen team bracket the order would be 1,
+	 * 16, 8, 9, 4, 13, and so on down the bracket.
+	 * 
+	 * @param challengerList
+	 * @return
+	 */
 	public ArrayList<Challenger> challengerSorter(ArrayList<Challenger> challengerList) {
 		ArrayList<Challenger> mergingArray = new ArrayList<Challenger>();
 		if(challengerList.size() == 2) {

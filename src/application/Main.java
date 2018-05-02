@@ -1,3 +1,14 @@
+/**
+ * Project: Tournament Bracket Project
+ * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ * E-mail: awaldron2@wisc.edu
+ * Due: 5/3/2018
+ * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
+ *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Other Sources Used: None.
+ * Known Bugs:
+ */
+
 package application;
 	
 import java.io.File;
@@ -181,7 +192,6 @@ public class Main extends Application {
 
 				        @Override
 				        public void handle(ActionEvent event) {
-				            System.out.println("Hello World!");
 				            button.setDisable(true);
 				            label.setText("TEST");
 				        }
