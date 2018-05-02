@@ -137,30 +137,35 @@ public class Main extends Application {
 				scoreXCoord+=2;
 			}
 			
-			int TBDLabelXCoord = 2;
-			int TBDLabelYCoord = 3;
+			int TBDLabelXCoord = 0;
+			int TBDLabelYCoord = 2;
 			for(int i=0; i<numRounds; i++) {
 				if(i==0) {
-					for(int j=0; j<teamLabels.get(i).size(); j++) {
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
 						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 2);
 						TBDLabelYCoord +=5;
 					}
-					TBDLabelYCoord = 5;
+					TBDLabelYCoord = 3;
 				} else if(i==1) {
-					for(int j=0; j<teamLabels.get(i).size(); j++) {
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
 						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 5);
 						TBDLabelYCoord+=10;
 					}
-					TBDLabelYCoord = 10;
+					TBDLabelYCoord = 5;
 				} else if(i==2) {
-					for(int j=0; j<teamLabels.get(i).size(); j++) {
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
 						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 10);
 						TBDLabelYCoord+=20;
 					}
-					TBDLabelYCoord = 20;
+					TBDLabelYCoord = 10;
 				} else {
-					for(int j=0; j<teamLabels.get(i).size(); j++) {
+					for(int j=0; j<teamLabels.get(i).size(); j+=2) {
 						gridPane.add(teamLabels.get(i).get(j), TBDLabelXCoord, TBDLabelYCoord);
+						gridPane.add(teamLabels.get(i).get(j + 1), TBDLabelXCoord, TBDLabelYCoord + 20);
+
 						TBDLabelYCoord+=40;
 					}
 				}
@@ -247,24 +252,47 @@ public class Main extends Application {
 			
 			// Adding initial team names to teamLabels
 			teamLabels = new ArrayList<ArrayList<Label>>();
-			for(int i = numRounds; i >= 0; i--) {
+			for(int i = numRounds; i > 0; i--) {
 				teamLabels.add(new ArrayList<Label>());
-				if(i == 0){
-					for(int j = 0; j < challengers.size(); j++) {
+				//System.out.println(teamLabels.size());
+			}
+			
+			for(int i = numRounds; i > 0; i--) {
+//				if(i == 1){
+//					for(int j = 0; j < challengers.size(); j++) {
+//						teamLabels.get(0).add(new Label(bracket.getActiveChallengers().get(j).getName()));
+//					}
+//				}
+//				else{
+//					for(int j = 0; j < (int)Math.pow(2, i); j++) {
+//						teamLabels.get(4 - i).add(new Label("TBD"));
+//					}
+//				}
+				for(int j = 0; j < Math.pow(2, i); j ++){
+					if( i == 4){
 						teamLabels.get(0).add(new Label(bracket.getActiveChallengers().get(j).getName()));
 					}
-				}
-				else{
-					for(int j = 0; j<(Math.pow(2, i)/2); j++) {
-						teamLabels.get(teamLabels.size()-1).add(new Label("TBD"));
+					else{
+						teamLabels.get(4 - i).add(new Label("TBD"));	
 					}
 				}
+				//System.out.println(i-1 +" " + teamLabels.get(i - 1).size());
+
+			}
+			
+			for(int i = 0; i < teamLabels.size(); i ++){
+				for(int j = 0; j < teamLabels.get(i).size(); j++){
+					System.out.print(teamLabels.get(i).get(j) + ", ");
+				}
+				System.out.println();
 			}
 			
 			// adding matchups to matchup 
 			for(int i = 0; i < teamLabels.size(); i++) { // number of rounds
+				bracket.getMatchups().add(new ArrayList<Matchup>());
 				if(i == 0){
-					for(int j = 0; j < teamLabels.get(i).size(); j += 2){ // number of matchups in each round
+					System.out.println(teamLabels.get(i).size());
+					for(int j = 0; j < teamLabels.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1]));
 					}
 				}
