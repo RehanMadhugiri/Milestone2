@@ -13,10 +13,13 @@ package application;
 
 import java.util.Random;
 
+import javafx.scene.control.Button;
+
 public class Matchup {
 	
 	Challenger c1; // First challenger.
 	Challenger c2; // Second challenger.
+	Button button;
 	
 	/**
 	 * The constructor method sets the c1 field to the first challenger and the c2 field to the
@@ -26,9 +29,10 @@ public class Matchup {
 	 * @param c2 Second challenger.
 	 * @return Nothing returned.
 	 */
-	public Matchup(Challenger c1, Challenger c2){
+	public Matchup(Challenger c1, Challenger c2, Button button){
 		this.c1 = c1;
 		this.c2 = c2;
+		this.button = button;
 	}
 	
 	/**
@@ -55,5 +59,9 @@ public class Matchup {
 		
 		// c2's score is greater
 		return c2;
+	}
+	
+	public Button getButton(){
+		return button;
 	}
 }
