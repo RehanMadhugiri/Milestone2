@@ -49,10 +49,12 @@ public class Bracket {
 		return activeChallengers;
 	}
 	
-//	public void eliminateChallenger(Challenger c) {
-//		activeChallengers.remove(c);
-//	}
-	
+	/**
+	 * This method returns the ArrayList of ArrayList of matchups.
+	 * 
+	 * @param No parameters.
+	 * @return The ArrayList of ArrayList of matchups.
+	 */
 	public ArrayList<ArrayList<Matchup>> getMatchups() {
 		return matchups;
 	}

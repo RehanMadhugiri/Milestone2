@@ -15,6 +15,13 @@ import java.util.Random;
 
 import javafx.scene.control.Button;
 
+/**
+ * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ * 
+ * Matchup class that contains pertinent information on who is play who and gets the contains a
+ * method to determine a winner. Matchup objects are also assigned a submit button to help in the
+ * JavaFX action event implementation.
+ */
 public class Matchup {
 	
 	Challenger c1; // First challenger.
@@ -71,14 +78,37 @@ public class Matchup {
 		return button;
 	}
 	
+	/**
+	 * This method returns the first challenger of the matchup object. Useful for getting
+	 * the challenger and changing its name.
+	 * 
+	 * @param No parameters.
+	 * @return First challenger of the matchup.
+	 */
 	public Challenger getC1() {
 		return c1;
 	}
 
+	/**
+	 * This method returns the second challenger of the matchup object. Useful for getting
+	 * the challenger and changing its name.
+	 * 
+	 * @param No parameters.
+	 * @return Second challenger of the matchup.
+	 */
 	public Challenger getC2() {
 		return c2;
 	}
 	
+	/**
+	 * This method adds a challenger to the matchup whose initial challenger names are set to "TBD"
+	 * by changing "TBD" to whatever the name of the challenger is. In other words, it doesn't
+	 * actually add a new object, it just changes the name of the already existing challenger
+	 * object whose name is "TBD."
+	 * 
+	 * @param team The name of the challenger to be added.
+	 * @return Nothing returned.
+	 */
 	public void addChallenger(String team) {
 		if(c1.getName().equals("TBD")) c1.setName(team);
 		else if(c2.getName().equals("TBD")) c2.setName(team);

@@ -26,12 +26,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * 
+ * @author waldr
+ *
+ */
 public class Main extends Application {
 	
 	public static Bracket bracket;
@@ -45,7 +48,7 @@ public class Main extends Application {
 	private static int numRounds;
 	
 	@Override
-	public void start(Stage primaryStage) { // Needs to be changed to display who come in first, second, and third place.
+	public void start(Stage primaryStage) {
 		try {
 			GridPane gridPane = new GridPane();
 			ScrollPane scroll = new ScrollPane(gridPane);
@@ -213,8 +216,6 @@ public class Main extends Application {
 								teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
 								Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
 								resultMatchup.addChallenger(winner.getName());
-								System.out.println(resultMatchup.getC1());
-								System.out.println(resultMatchup.getC2());
 								
 								if( !(resultMatchup.getC1().getName().equals("TBD") || 
 										resultMatchup.getC2().getName().equals("TBD")) ) {

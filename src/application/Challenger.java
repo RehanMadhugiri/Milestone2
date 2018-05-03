@@ -13,6 +13,12 @@ package application;
 
 import javafx.scene.control.Label;
 
+/**
+ * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ * 
+ * This class represents a single challenger who is assigned a name as a string and score which
+ * can be compared when one challenger object plays another challenger obejct.
+ */
 public class Challenger {
 	
 	private String name; // Name of challenger.
