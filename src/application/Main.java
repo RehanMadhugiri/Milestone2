@@ -68,33 +68,32 @@ public class Main extends Application {
 				submitXCoord = i;
 				if(i == 0){
 					submitYCoord = 3;
-					for(int j = 0; j < submitButtons.get(i).size(); j++){
-						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
-						submitYCoord += 5;
+					for(int j = 0; j < bracket.getMatchups().get(i).size(); j++){
+						gridPane.add(bracket.getMatchups().get(i).get(j).getButton(), submitXCoord, submitYCoord);
+						submitYCoord += 5;						
 					}
 				}
-				
 				submitXCoord = 2 * i;
 				if(i == 1){
 					submitYCoord = 5;
-					for(int j = 0; j < submitButtons.get(i).size(); j++){
-						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+					for(int j = 0; j < bracket.getMatchups().get(i).size(); j++){
+						gridPane.add(bracket.getMatchups().get(i).get(j).getButton(), submitXCoord, submitYCoord);
 						submitButtons.get(i).get(j).setDisable(true);
 						submitYCoord += 10;
 					}
 				}
 				if(i == 2){
 					submitYCoord = 10;
-					for(int j = 0; j < submitButtons.get(i).size(); j++){
-						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+					for(int j = 0; j < bracket.getMatchups().get(i).size(); j++){
+						gridPane.add(bracket.getMatchups().get(i).get(j).getButton(), submitXCoord, submitYCoord);
 						submitButtons.get(i).get(j).setDisable(true);
 						submitYCoord += 20;
 					}
 				}
 				if( i == 3){
 					submitYCoord = 20;
-					for(int j = 0; j < submitButtons.get(i).size(); j++){
-						gridPane.add(submitButtons.get(i).get(j), submitXCoord, submitYCoord);
+					for(int j = 0; j < bracket.getMatchups().get(i).size(); j++){
+						gridPane.add(bracket.getMatchups().get(i).get(j).getButton(), submitXCoord, submitYCoord);
 						submitButtons.get(i).get(j).setDisable(true);
 						submitYCoord += 20;
 					}
@@ -187,8 +186,8 @@ public class Main extends Application {
 			
 			for(int i = 0; i < bracket.getMatchups().size(); i++) {
 				for(int j = 0; j < bracket.getMatchups().get(i).size(); j++) {
-					int roundIndex = i;
-					int matchupIndex = j;
+					int roundIndex = i; // Used in the ActionEvent
+					int matchupIndex = j; // Used in the ActionEvent
 					Matchup matchup = bracket.getMatchups().get(i).get(j);
 					Button button = matchup.getButton();
 					ArrayList<TextField> roundScores = teamScores.get(i);
@@ -203,17 +202,28 @@ public class Main extends Application {
 						
 						@Override
 						public void handle(ActionEvent event) {
-							System.out.println(score1.getText());
-							System.out.println(score2.getText());
-
 							team1.setScore(Integer.parseInt(score1.getText()));
 							team2.setScore(Integer.parseInt(score2.getText()));
 							Challenger winner = matchup.getWinner(team1, team2);
 							button.setDisable(true);
-							Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
-							System.out.println(resultLabel.getText());
-							resultLabel.setText(winner.getName());
-							teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
+							try {
+								Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
+								resultLabel.setText(winner.getName());
+								teams.get(roundIndex+1).get(matchupIndex).setName(winner.getName());
+								teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
+								Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
+								resultMatchup.addChallenger(winner.getName());
+								System.out.println(resultMatchup.getC1());
+								System.out.println(resultMatchup.getC2());
+								
+								if( !(resultMatchup.getC1().getName().equals("TBD") || 
+										resultMatchup.getC2().getName().equals("TBD")) ) {
+									resultMatchup.getButton().setDisable(false);
+								}
+							} catch (IndexOutOfBoundsException e) {
+								gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
+							}
+							
 						}
 					});
 				}
@@ -351,7 +361,7 @@ public class Main extends Application {
 				bracket.getMatchups().add(new ArrayList<Matchup>());
 				if(i == 0){
 //					System.out.println(teamLabels.get(i).size());
-					for(int j = 0; j < teams.get(i).size()/2 - 1; j += 2){ // number of matchups in each round
+					for(int j = 0; j < teams.get(i).size()/2; j ++){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(
 								new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1], submitButtons.get(0).get(j)));
 					}
