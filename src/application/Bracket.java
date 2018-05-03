@@ -1,7 +1,7 @@
 /**
  * Project: Tournament Bracket Project
  * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
- * E-mail: madhugiri@wisc.edu, nmerfeld@wisc.edu, xshao36@wisc.edu, awaldron2@wisc.edu
+ * E-mail: awaldron2@wisc.edu
  * Due: 5/3/2018
  * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
  *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
@@ -49,12 +49,10 @@ public class Bracket {
 		return activeChallengers;
 	}
 	
-	/**
-	 * This method returns the ArrayList of ArrayList of matchups.
-	 * 
-	 * @param No parameters.
-	 * @return The ArrayList of ArrayList of matchups.
-	 */
+	public void eliminateChallenger(Challenger c) {
+		activeChallengers.remove(c);
+	}
+	
 	public ArrayList<ArrayList<Matchup>> getMatchups() {
 		return matchups;
 	}
@@ -79,6 +77,13 @@ public class Bracket {
 	 */
 	public ArrayList<Challenger> challengerSorter(ArrayList<Challenger> challengerList) {
 		ArrayList<Challenger> mergingArray = new ArrayList<Challenger>();
+		if(challengerList.size() == 0){
+			return mergingArray;
+		}
+		if(challengerList.size() == 1){
+			mergingArray.add(challengerList.get(0));
+			return mergingArray;
+		}
 		if(challengerList.size() == 2) {
 			return challengerList;
 		} else {
