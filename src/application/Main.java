@@ -239,6 +239,7 @@ public class Main extends Application {
 									} catch (IndexOutOfBoundsException e) {
 										gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
 										gridPane.add(new Label("Second Place: " + loser.getName()), numRounds*10, 11);
+										if(teams.get(0).size() == 2) return;
 										Matchup thirdPlace = new Matchup(semifinalists.get(0), semifinalists.get(1), new Button(""));
 										gridPane.add(new Label("Third Place: " + thirdPlace.getWinner(semifinalists.get(0), semifinalists.get(1))), numRounds*10, 12);
 									}
