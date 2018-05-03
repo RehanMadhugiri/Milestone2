@@ -49,41 +49,15 @@ public class Bracket {
 		return activeChallengers;
 	}
 	
-//	public void eliminateChallenger(Challenger c) {
-//		activeChallengers.remove(c);
-//	}
-	
+	/**
+	 * This method returns the ArrayList of ArrayList of matchups.
+	 * 
+	 * @param No parameters.
+	 * @return The ArrayList of ArrayList of matchups.
+	 */
 	public ArrayList<ArrayList<Matchup>> getMatchups() {
 		return matchups;
 	}
-	
-	public Challenger getThirdPlace() {
-		int numRounds = (int) (Math.log(numChallengers) / Math.log(2));
-		ArrayList<Matchup> semifinalRound = matchups.get(numRounds-2);
-		Matchup m1 = semifinalRound.get(0);
-		Matchup m2 = semifinalRound.get(1);
-		Challenger team1 = null;
-		Challenger team2 = null;
-		System.out.println(m1.getC1().getLoss());
-		System.out.println(m1.getC2().getLoss());
-		System.out.println(m2.getC1().getLoss());
-		System.out.println(m2.getC2().getLoss());
-		if(m1.getC1().getLoss() == numRounds-1) {
-			team1 = m1.getC1();
-		}
-		else if(m1.getC2().getLoss() == numRounds-1) {
-			team1 = m1.getC2();
-		}
-		
-		if(m2.getC1().getLoss() == numRounds-1) {
-			team2 = m2.getC1();
-		}
-		if(m2.getC2().getLoss() == numRounds-1) {
-			team2 = m2.getC2();
-		}
-		return m1.getWinner(team1, team2);
-	}
-	
 	
 	/**
 	 * This method takes the ArrayList of challengers and sorts them in the order of where they
