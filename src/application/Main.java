@@ -238,7 +238,7 @@ public class Main extends Application {
 										gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
 										gridPane.add(new Label("Second Place: " + loser.getName()), numRounds*10, 11);
 										Matchup thirdPlace = new Matchup(semifinalists.get(0), semifinalists.get(1), new Button(""));
-										gridPane.add(new Label("Third Place: " + thirdPlace.getWinner(), numRounds*10, 12);
+										gridPane.add(new Label("Third Place: " + thirdPlace.getWinner()), numRounds*10, 12);
 									}
 								}
 							} catch (NumberFormatException e) {
