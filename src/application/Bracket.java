@@ -105,6 +105,13 @@ public class Bracket {
 	 */
 	public ArrayList<Challenger> challengerSorter(ArrayList<Challenger> challengerList) {
 		ArrayList<Challenger> mergingArray = new ArrayList<Challenger>();
+		if(challengerList.size() == 0){
+			return mergingArray;
+		}
+		if(challengerList.size() == 1){
+			mergingArray.add(challengerList.get(0));
+			return mergingArray;
+		}
 		if(challengerList.size() == 2) {
 			return challengerList;
 		} else {
