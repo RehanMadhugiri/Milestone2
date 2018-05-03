@@ -56,16 +56,18 @@ public class Main extends Application {
 			ScrollPane scroll = new ScrollPane(gridPane);
 			BorderPane root = new BorderPane(scroll);
 			root.setPadding(new Insets(10, 20, 10, 20));
+			
+			if(bracket.getAllChallengers().length == 0){
+				gridPane.add(new Label("There are no challengers in the bracket"), 0, 0);
+			}
+			
+			else if(bracket.getAllChallengers().length == 1){
+				gridPane.add(new Label("Winner: " + bracket.getAllChallengers()[0]), 0, 0);
+			}
+			
+			else{
 			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
-			
-//			int teamYCoord = 2;
-//			for(int i=0; i<teamLabels.size(); i+=2) {
-//				gridPane.add(teamLabels.get(i), 0, teamYCoord);
-//				gridPane.add(teamLabels.get(i+1), 0, teamYCoord + 2);
-//				teamYCoord += 5;
-//			}
-			
-			
+				
 			int submitYCoord;
 			int submitXCoord;
 			
@@ -249,7 +251,7 @@ public class Main extends Application {
 					});
 				}
 			}
-						
+			}
 			root.setLeft(gridPane);
 
 			Scene scene = new Scene(root,1000,500);			
