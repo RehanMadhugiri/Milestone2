@@ -15,6 +15,12 @@ import java.util.Random;
 
 import javafx.scene.control.Button;
 
+/**
+ * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ *
+ * This class represents a matchup, and contains all pertinent information: the first challenger,
+ * the second challenger.
+ */
 public class Matchup {
 	
 	private Challenger c1; // First challenger.
@@ -71,14 +77,33 @@ public class Matchup {
 		return button;
 	}
 	
+	/**
+	 * This method returns the first challenger of the matchup.
+	 * 
+	 * @param No parameters.
+	 * @return The first challenger of the matchup.
+	 */
 	public Challenger getC1() {
 		return c1;
 	}
-
+	
+	/**
+	 * This method returns the second challenger of the matchup.
+	 * 
+	 * @param No parameters.
+	 * @return The second challenger of the matchup.
+	 */
 	public Challenger getC2() {
 		return c2;
 	}
 	
+	/**
+	 * This method "adds" a challenger to the matchup. It doesn't actually add a challenger object,
+	 * it just renames the already existing challenger's name from "TBD" to whatever string is
+	 * passed in as an argument.
+	 * 
+	 * @param team
+	 */
 	public void addChallenger(String team) {
 		if(c1.getName().equals("TBD")) c1.setName(team);
 		else if(c2.getName().equals("TBD")) c2.setName(team);
