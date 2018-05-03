@@ -186,7 +186,7 @@ public class Main extends Application {
 				TBDLabelXCoord += 2;
 			}
 			
-			
+			// TEST TEST TEST
 			for(int i = 0; i < bracket.getMatchups().size(); i++) {
 				for(int j = 0; j < bracket.getMatchups().get(i).size(); j++) {
 					int roundIndex = i; // Used in the ActionEvent
