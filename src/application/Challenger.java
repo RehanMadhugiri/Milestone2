@@ -3,10 +3,9 @@
  * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  * E-mail: madhugiri@wisc.edu, nmerfeld@wisc.edu, xshao36@wisc.edu, awaldron2@wisc.edu
  * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Files: Main.java, Bracket.java, Challenger.java, Matchup.java, teamList.txt.
  * Other Sources Used: None.
- * Known Bugs:
+ * Known Bugs: None.
  */
 
 package application;

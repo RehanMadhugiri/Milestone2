@@ -3,10 +3,9 @@
  * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  * E-mails: madhugiri@wisc.edu, nmerfeld@wisc.edu, xshao36@wisc.edu, awaldron2@wisc.edu
  * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Files: Main.java, Bracket.java, Challenger.java, Matchup.java, teamList.txt.
  * Other Sources Used: None.
- * Known Bugs:
+ * Known Bugs: None.
  */
 
 package application;
@@ -19,7 +18,8 @@ import javafx.scene.control.Button;
  * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  *
  * This class represents a matchup, and contains all pertinent information: the first challenger,
- * the second challenger.
+ * the second challenger, and the submit button assigned to the matchup that is used to set the
+ * scores when an event is handled.
  */
 public class Matchup {
 	

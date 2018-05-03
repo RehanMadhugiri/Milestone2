@@ -3,30 +3,38 @@
  * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  * E-mail: madhugiri@wisc.edu, nmerfeld@wisc.edu, xshao36@wisc.edu, awaldron2@wisc.edu
  * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Files: Main.java, Bracket.java, Challenger.java, Matchup.java, teamList.txt.
  * Other Sources Used: None.
- * Known Bugs:
+ * Known Bugs: None.
  */
 
 package application;
 
 import java.util.ArrayList;
 
+/**
+ * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
+ *
+ * This class mostly contains getter methods for fields that need to be accessed in Main.java.
+ */
 public class Bracket {
 	
-	private Challenger[] challengersAtStart;
-	private ArrayList<Challenger> activeChallengers;
-	private int numChallengers;
-	private ArrayList<ArrayList<Matchup>> matchups = new ArrayList<ArrayList<Matchup>>();
+	private Challenger[] challengersAtStart;  // Array of challengers at the beginning of the tournament.
+	private ArrayList<Challenger> activeChallengers; // ArrayList of active challengers.
+	private ArrayList<ArrayList<Matchup>> matchups = new ArrayList<ArrayList<Matchup>>(); // ArrayList of ArrayList of matchups. The outer ArrayList indices indicate the round. So the length of the field equals the number of rounds in the tournament.
 	
+	/**
+	 * Constructor method that initializes the challengersAtStart field and the activeChallengers field.
+	 * 
+	 * @param challengers ArrayList of challengers in numerical order from the file of teams.
+	 * @return Nothing returned.
+	 */
 	public Bracket(ArrayList<Challenger> challengers) {
 		activeChallengers = challengerSorter(challengers);
 		challengersAtStart = new Challenger[challengers.size()];
 		for(int i=0; i<challengers.size(); i++) {
 			challengersAtStart[i] = activeChallengers.get(i);
 		}
-		numChallengers = challengers.size();
 	}
 	
 	/**

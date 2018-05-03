@@ -3,10 +3,9 @@
  * Authors: Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  * E-mail: madhugiri@wisc.edu, nmerfeld@wisc.edu, xshao36@wisc.edu, awaldron2@wisc.edu
  * Due: 5/3/2018
- * Files: Milestone3/src/application/Main.java, Milestone3/src/application/Bracket.java,
- *        Milestone3/src/application/Challenger.java, Milestone3/src/application/Matchup.java
+ * Files: Main.java, Bracket.java, Challenger.java, Matchup.java, teamList.txt.
  * Other Sources Used: None.
- * Known Bugs:
+ * Known Bugs: None.
  */
 
 package application;
@@ -29,26 +28,28 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
- * 
- * @author waldr
+ * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
  *
+ * This class contains all the JavaFX setup, processes, user interaction, etc.
  */
 public class Main extends Application {
 	
-	public static Bracket bracket;
-	//public static ArrayList<Label> teamLabels;
-	private static ArrayList<ArrayList<TextField>> teamScores;
-	private static ArrayList<ArrayList<Button>> submitButtons;
-	private static ArrayList<ArrayList<Challenger>> teams;
-	private static int numSubmit;
-	private static int numTextFields;
-	private static int numTBDLabels;
-	private static int numRounds;
+	public static Bracket bracket; // The tournament bracket object.
+	private static ArrayList<ArrayList<TextField>> teamScores; // ArrayList of an ArrayList of team score text fields. The first dimension of the ArrayList is the number of rounds, while the ArrayList inside contains the text fields themselves.
+	private static ArrayList<ArrayList<Button>> submitButtons; // ArrayList of an ArrayList of submit buttons. The first dimension of the ArrayList is the number of rounds, while the ArrayList inside contains the buttons themselves.
+	private static ArrayList<ArrayList<Challenger>> teams; // ArrayList of an ArrayList of challenger objects. The first dimension of the ArrayList is the number of rounds, while the ArrayList inside contains the challenger objects themselves.
 	
+	private static int numRounds; // Number of rounds in the tournament.
+	
+	/**
+	 * This method creates the controls, sets properties and the stage, and shows the stage.
+	 * 
+	 * @param primaryStage The stage that all the controls and functionality will be placed in.
+	 * @return Nothing returned.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -57,21 +58,21 @@ public class Main extends Application {
 			BorderPane root = new BorderPane(scroll);
 			root.setPadding(new Insets(10, 20, 10, 20));
 			
-			if(bracket.getAllChallengers().length == 0){
+			if(bracket.getAllChallengers().length == 0){ // If number of challengers equals 0.
 				gridPane.add(new Label("There are no challengers in the bracket"), 0, 0);
 			}
 			
-			else if(bracket.getAllChallengers().length == 1){
+			else if(bracket.getAllChallengers().length == 1){ // If number of challengers equals 1.
 				gridPane.add(new Label("Winner: " + bracket.getAllChallengers()[0]), 0, 0);
 			}
 			
-			else{
+			else {
 			root.setTop(new Label("Enter a score in the text fields and press submit when both scores are added."));
 				
 			int submitYCoord;
 			int submitXCoord;
 			
-			for(int i = 0; i < numRounds; i++){
+			for(int i = 0; i < numRounds; i++){ // Adds buttons from matchups class to gridPane.
 				submitXCoord = i;
 				if(i == 0){
 					submitYCoord = 3;
@@ -109,7 +110,7 @@ public class Main extends Application {
 			
 			int scoreXCoord = 1;
 			int scoreYCoord = 2;
-			for(int i=0; i<numRounds; i++) {
+			for(int i=0; i<numRounds; i++) { // Adds textfields to the gridPane.
 				if(i==0) {
 					for(int j=0; j<teamScores.get(i).size(); j+=2) {
 						TextField teamScores1 = teamScores.get(i).get(j);
@@ -157,7 +158,7 @@ public class Main extends Application {
 			
 			int TBDLabelXCoord = 0;
 			int TBDLabelYCoord = 2;
-			for(int i=0; i<numRounds; i++) {
+			for(int i=0; i<numRounds; i++) { // Adds the TBD and team labels to the gridPane.
 				if(i==0) {
 					for(int j=0; j<teams.get(i).size(); j+=2) {
 						gridPane.add(teams.get(i).get(j).getLabel(), TBDLabelXCoord, TBDLabelYCoord);
@@ -191,7 +192,7 @@ public class Main extends Application {
 			}
 			
 			ArrayList<Challenger> semifinalists = new ArrayList<Challenger>();
-			for(int i = 0; i < bracket.getMatchups().size(); i++) {
+			for(int i = 0; i < bracket.getMatchups().size(); i++) { // This loop is for setting event handling.
 				for(int j = 0; j < bracket.getMatchups().get(i).size(); j++) {
 					int roundIndex = i; // Used in the ActionEvent
 					int matchupIndex = j; // Used in the ActionEvent
@@ -264,6 +265,13 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * This method does pre-computation, reads in the team file to make an ArrayList of
+	 * challengers, and launches the tournament.
+	 * 
+	 * @param args String array of command line arguments.
+	 * @return Nothing returned.
+	 */
 	public static void main(String[] args) {
 		File teamsFile = new File(args[0]);
 		ArrayList<Challenger> challengers = new ArrayList<Challenger>();
@@ -279,9 +287,6 @@ public class Main extends Application {
 			
 			bracket = new Bracket(challengers);
 			
-			numSubmit = challengers.size() - 1;
-			numTextFields = (challengers.size() * 2) - 2;
-			numTBDLabels = (challengers.size()) - 2;
 			numRounds = (int) (Math.log(challengers.size()) / Math.log(2));
 		
 			
@@ -305,20 +310,10 @@ public class Main extends Application {
 			teams = new ArrayList<ArrayList<Challenger>>();
 			for(int i = numRounds; i > 0; i--) {
 				teams.add(new ArrayList<Challenger>());
-				//System.out.println(teamLabels.size());
 			}
 			
 			for(int i = numRounds; i > 0; i--) {
-//				if(i == 1){
-//					for(int j = 0; j < challengers.size(); j++) {
-//						teamLabels.get(0).add(new Label(bracket.getActiveChallengers().get(j).getName()));
-//					}
-//				}
-//				else{
-//					for(int j = 0; j < (int)Math.pow(2, i); j++) {
-//						teamLabels.get(4 - i).add(new Label("TBD"));
-//					}
-//				}
+
 				for(int j = 0; j < Math.pow(2, i); j ++){
 					if( i == numRounds){
 						teams.get(0).add(new Challenger(bracket.getActiveChallengers().get(j).getName()));
@@ -327,22 +322,19 @@ public class Main extends Application {
 						teams.get(numRounds - i).add(new Challenger("TBD"));	
 					}
 				}
-				//System.out.println(i-1 +" " + teamLabels.get(i - 1).size());
-
 			}
 			
 			// adding matchups to matchup 
 			for(int i = 0; i < teams.size(); i++) { // number of rounds
 				bracket.getMatchups().add(new ArrayList<Matchup>());
-				if(i == 0){
-//					System.out.println(teamLabels.get(i).size());
+				if(i == 0) {
 					for(int j = 0; j < teams.get(i).size()/2; j ++){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(
 								new Matchup(bracket.getAllChallengers()[j], bracket.getAllChallengers()[j+1], submitButtons.get(0).get(j)));
 					}
 				}
 				
-				else{
+				else {
 					for(int j = 0; j < teams.get(i).size() / 2; j ++){ // number of matchups in each round
 						bracket.getMatchups().get(i).add(
 								new Matchup(new Challenger("TBD"), new Challenger("TBD"), submitButtons.get(i).get(j)));
