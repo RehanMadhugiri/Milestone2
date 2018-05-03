@@ -70,4 +70,18 @@ public class Matchup {
 	public Button getButton(){
 		return button;
 	}
+	
+	public Challenger getC1() {
+		return c1;
+	}
+
+	public Challenger getC2() {
+		return c2;
+	}
+	
+	public void addChallenger(String team) {
+		if(c1.getName().equals("TBD")) c1.setName(team);
+		else if(c2.getName().equals("TBD")) c2.setName(team);
+	}
+	
 }
