@@ -214,7 +214,7 @@ public class Main extends Application {
 								} else {
 									team1.setScore(Integer.parseInt(score1.getText()));
 									team2.setScore(Integer.parseInt(score2.getText()));
-									Challenger winner = matchup.getWinner(team1, team2);
+									Challenger winner = matchup.getWinner();
 									button.setDisable(true);
 									try {
 										Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();

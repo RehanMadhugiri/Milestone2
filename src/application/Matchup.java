@@ -50,7 +50,7 @@ public class Matchup {
 	 * @param c2 Second challenger.
 	 * @return The challenger with the greater score.
 	 */
-	public Challenger getWinner(Challenger c1, Challenger c2) {
+	public Challenger getWinner() {
 		// Tie 
 		if(c1.getScore() == c2.getScore()){
 			Random random = new Random(2);
