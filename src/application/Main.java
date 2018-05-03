@@ -20,7 +20,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -205,25 +207,59 @@ public class Main extends Application {
 						
 						@Override
 						public void handle(ActionEvent event) {
-							team1.setScore(Integer.parseInt(score1.getText()));
-							team2.setScore(Integer.parseInt(score2.getText()));
-							Challenger winner = matchup.getWinner(team1, team2);
-							button.setDisable(true);
 							try {
-								Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
-								resultLabel.setText(winner.getName());
-								teams.get(roundIndex+1).get(matchupIndex).setName(winner.getName());
-								teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
-								Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
-								resultMatchup.addChallenger(winner.getName());
-								
-								if( !(resultMatchup.getC1().getName().equals("TBD") || 
-										resultMatchup.getC2().getName().equals("TBD")) ) {
-									resultMatchup.getButton().setDisable(false);
+								if(Integer.parseInt(score1.getText()) < 0  || Integer.parseInt(score2.getText()) < 0) {
+									Alert negativeNumAlert = new Alert(Alert.AlertType.ERROR, "ERROR: Negative numbers are not valid scores. Re-enter a positive integer.", ButtonType.OK);
+									negativeNumAlert.showAndWait();
+								} else {
+									team1.setScore(Integer.parseInt(score1.getText()));
+									team2.setScore(Integer.parseInt(score2.getText()));
+									Challenger winner = matchup.getWinner(team1, team2);
+									button.setDisable(true);
+									try {
+										Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
+										resultLabel.setText(winner.getName());
+										teams.get(roundIndex+1).get(matchupIndex).setName(winner.getName());
+										teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
+										Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
+										resultMatchup.addChallenger(winner.getName());
+										
+										if( !(resultMatchup.getC1().getName().equals("TBD") || 
+												resultMatchup.getC2().getName().equals("TBD")) ) {
+											resultMatchup.getButton().setDisable(false);
+										}
+									} catch (IndexOutOfBoundsException e) {
+										gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
+									}
 								}
-							} catch (IndexOutOfBoundsException e) {
-								gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
+							} catch (NumberFormatException e) {
+								Alert nonIntAlert = new Alert(Alert.AlertType.ERROR, "ERROR: Words are not valid scores. Re-enter a positive integer.", ButtonType.OK);
+								nonIntAlert.showAndWait();
 							}
+//							if(Integer.parseInt(score1.getText()) < 0  || Integer.parseInt(score2.getText()) < 0) {
+//								Alert negativeNumAlert = new Alert(Alert.AlertType.ERROR, "ERROR: Negative numbers are not valid scores. Re-enter a positive integer.", ButtonType.OK);
+//								negativeNumAlert.showAndWait();
+//							} else {
+//								team1.setScore(Integer.parseInt(score1.getText()));
+//								team2.setScore(Integer.parseInt(score2.getText()));
+//								Challenger winner = matchup.getWinner(team1, team2);
+//								button.setDisable(true);
+//								try {
+//									Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
+//									resultLabel.setText(winner.getName());
+//									teams.get(roundIndex+1).get(matchupIndex).setName(winner.getName());
+//									teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
+//									Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
+//									resultMatchup.addChallenger(winner.getName());
+//									
+//									if( !(resultMatchup.getC1().getName().equals("TBD") || 
+//											resultMatchup.getC2().getName().equals("TBD")) ) {
+//										resultMatchup.getButton().setDisable(false);
+//									}
+//								} catch (IndexOutOfBoundsException e) {
+//									gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
+//								}
+//							}
 							
 						}
 					});
