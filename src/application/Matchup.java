@@ -15,18 +15,11 @@ import java.util.Random;
 
 import javafx.scene.control.Button;
 
-/**
- * @authors Rehan Madhugiri, Nick Merfeld, Xianjia Shao, Andy Waldron
- * 
- * Matchup class that contains pertinent information on who is play who and gets the contains a
- * method to determine a winner. Matchup objects are also assigned a submit button to help in the
- * JavaFX action event implementation.
- */
 public class Matchup {
 	
-	Challenger c1; // First challenger.
-	Challenger c2; // Second challenger.
-	Button button; // Submit button.
+	private Challenger c1; // First challenger.
+	private Challenger c2; // Second challenger.
+	private Button button; // Submit button.
 	
 	/**
 	 * The constructor method sets the c1 field to the first challenger and the c2 field to the
@@ -50,7 +43,7 @@ public class Matchup {
 	 * @param c2 Second challenger.
 	 * @return The challenger with the greater score.
 	 */
-	public Challenger getWinner() {
+	public Challenger getWinner(Challenger c1, Challenger c2) {
 		// Tie 
 		if(c1.getScore() == c2.getScore()){
 			Random random = new Random(2);
@@ -78,37 +71,14 @@ public class Matchup {
 		return button;
 	}
 	
-	/**
-	 * This method returns the first challenger of the matchup object. Useful for getting
-	 * the challenger and changing its name.
-	 * 
-	 * @param No parameters.
-	 * @return First challenger of the matchup.
-	 */
 	public Challenger getC1() {
 		return c1;
 	}
 
-	/**
-	 * This method returns the second challenger of the matchup object. Useful for getting
-	 * the challenger and changing its name.
-	 * 
-	 * @param No parameters.
-	 * @return Second challenger of the matchup.
-	 */
 	public Challenger getC2() {
 		return c2;
 	}
 	
-	/**
-	 * This method adds a challenger to the matchup whose initial challenger names are set to "TBD"
-	 * by changing "TBD" to whatever the name of the challenger is. In other words, it doesn't
-	 * actually add a new object, it just changes the name of the already existing challenger
-	 * object whose name is "TBD."
-	 * 
-	 * @param team The name of the challenger to be added.
-	 * @return Nothing returned.
-	 */
 	public void addChallenger(String team) {
 		if(c1.getName().equals("TBD")) c1.setName(team);
 		else if(c2.getName().equals("TBD")) c2.setName(team);
