@@ -188,7 +188,7 @@ public class Main extends Application {
 				TBDLabelXCoord += 2;
 			}
 			
-			// TEST TEST TEST
+			ArrayList<Challenger> semifinalists = new ArrayList<Challenger>();
 			for(int i = 0; i < bracket.getMatchups().size(); i++) {
 				for(int j = 0; j < bracket.getMatchups().get(i).size(); j++) {
 					int roundIndex = i; // Used in the ActionEvent
@@ -216,6 +216,12 @@ public class Main extends Application {
 									team2.setScore(Integer.parseInt(score2.getText()));
 									Challenger winner = matchup.getWinner();
 									button.setDisable(true);
+									Challenger loser;
+									if(team1 == winner) loser = team2;
+									else loser = team1;
+									if(roundIndex == numRounds-2) {
+										semifinalists.add(loser);
+									}
 									try {
 										Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
 										resultLabel.setText(winner.getName());
@@ -230,91 +236,21 @@ public class Main extends Application {
 										}
 									} catch (IndexOutOfBoundsException e) {
 										gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
+										gridPane.add(new Label("Second Place: " + loser.getName()), numRounds*10, 11);
+										Matchup thirdPlace = new Matchup(semifinalists.get(0), semifinalists.get(1), new Button(""));
+										gridPane.add(new Label("Third Place: " + thirdPlace.getWinner(semifinalists.get(0), 
+											semifinalists.get(1)).getName()), numRounds*10, 12);
 									}
 								}
 							} catch (NumberFormatException e) {
 								Alert nonIntAlert = new Alert(Alert.AlertType.ERROR, "ERROR: Words are not valid scores. Re-enter a positive integer.", ButtonType.OK);
 								nonIntAlert.showAndWait();
 							}
-//							if(Integer.parseInt(score1.getText()) < 0  || Integer.parseInt(score2.getText()) < 0) {
-//								Alert negativeNumAlert = new Alert(Alert.AlertType.ERROR, "ERROR: Negative numbers are not valid scores. Re-enter a positive integer.", ButtonType.OK);
-//								negativeNumAlert.showAndWait();
-//							} else {
-//								team1.setScore(Integer.parseInt(score1.getText()));
-//								team2.setScore(Integer.parseInt(score2.getText()));
-//								Challenger winner = matchup.getWinner(team1, team2);
-//								button.setDisable(true);
-//								try {
-//									Label resultLabel = teams.get(roundIndex+1).get(matchupIndex).getLabel();
-//									resultLabel.setText(winner.getName());
-//									teams.get(roundIndex+1).get(matchupIndex).setName(winner.getName());
-//									teamScores.get(roundIndex+1).get(matchupIndex).setDisable(false);
-//									Matchup resultMatchup = bracket.getMatchups().get(roundIndex+1).get(matchupIndex/2);
-//									resultMatchup.addChallenger(winner.getName());
-//									
-//									if( !(resultMatchup.getC1().getName().equals("TBD") || 
-//											resultMatchup.getC2().getName().equals("TBD")) ) {
-//										resultMatchup.getButton().setDisable(false);
-//									}
-//								} catch (IndexOutOfBoundsException e) {
-//									gridPane.add(new Label("Winner: " + winner.getName()), numRounds*10, 10);
-//								}
-//							}
-							
 						}
 					});
 				}
 			}
-			
-			
-//			for(int i = 0; i < submitButtons.size(); i++) {
-//				for(int j = 0; j < submitButtons.get(i).size(); j++) {
-//					int roundIndex = i;
-//					int buttonIndex = j;
-//					Button button = submitButtons.get(i).get(j);
-//					ArrayList<TextField> roundScores = teamScores.get(i);
-//					TextField score1 = roundScores.get(j*2);
-//					TextField score2 = roundScores.get(j*2 + 1);		
-//					ArrayList<Challenger> roundChallengers = teams.get(i);
-//					Challenger team1 = roundChallengers.get(j*2);
-//					Challenger team2 = roundChallengers.get(j*2+1);
-//			
-//					button.setOnAction(new EventHandler<ActionEvent>() {
-//
-//				        @Override
-//				        public void handle(ActionEvent event) {	
-//				        	
-//				        		Label label;
-//				            if(Integer.parseInt(score1.getText()) > Integer.parseInt(score2.getText())) {
-//				            		label = team1.getLabel();
-//				            }
-//				            else if(Integer.parseInt(score1.getText()) < Integer.parseInt(score2.getText())) {
-//				            		label = team2.getLabel();
-//				            }
-//				            else {
-//				            		Random random = new Random(2);
-//				            		int result = random.nextInt();
-//				            		if(result == 0) label = team1.getLabel();
-//				            		else label = team2.getLabel();
-//				            }
-//				            
-//				            
-//				            button.setDisable(true);
-//				            Label resultLabel = teams.get(roundIndex+1).get(buttonIndex).getLabel();
-//				            resultLabel.setText(label.getText());
-//				            teamScores.get(roundIndex+1).get(buttonIndex).setDisable(false);
-//				            if(team1.getLabel().getText().equals("TBD") || team2.getLabel().getText().equals("TBD")) return;
-//				            	Button activatedButton = submitButtons.get(roundIndex+1).get(buttonIndex/2);
-//					        activatedButton.setDisable(false);
-//				            
-//				        }
-//				    });
-//				}
-//			}
-			
-//			Label winner = new Label("Champion");
-//			gridPane.add(winner, 8, 20);
-			
+						
 			root.setLeft(gridPane);
 
 			Scene scene = new Scene(root,1000,500);			
